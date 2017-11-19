@@ -4,7 +4,7 @@ services:
   greeting:
     build: .
     container_name: solairerove-greeting
-    image: greeting:solairerove
+    image: solairerove/greeting:0.0.1
     entrypoint: java -jar /greeting.jar
     ports:
       - "8080:8080"

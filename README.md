@@ -1,6 +1,10 @@
 # spring-boot-k8s-hello-world
 Spring Boot k8s Hello World starter template
 
+### Kubernetes
+
+[k8s doc](https://github.com/solairerove/spring-boot-k8s-hello-world/blob/master/k8s/doc/k8s.adoc)
+
 ### Env Prerequisites:
 ``` bash
 ✗ java -version

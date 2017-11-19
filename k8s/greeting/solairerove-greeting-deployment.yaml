@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: solairerove-greeting
+  name: solairerove-greeting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: solairerove-greeting
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: solairerove-greeting
+    spec:
+      containers:
+      - image: solairerove/greeting:0.0.1
+        name: solairerove-greeting
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
