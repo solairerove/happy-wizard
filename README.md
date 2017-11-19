@@ -36,3 +36,9 @@ docker-compose version 1.16.1, build 6d1ac21
 
 * `./gradlew bootRun`
 * `./gradlew clean build && java -jar build/libs/*.jar`
+
+### How on container:
+
+* `./gradlew clean build`
+* `docker-compose build`
+* `docker-compose up`
