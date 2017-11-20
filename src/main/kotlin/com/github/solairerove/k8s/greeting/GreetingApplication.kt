@@ -1,4 +1,4 @@
-package com.github.solairerove.k8s.hello.world
+package com.github.solairerove.k8s.greeting
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
