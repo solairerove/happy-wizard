@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   greeting:
-    build: .
+    build: ../
     container_name: solairerove-greeting
     image: solairerove/greeting:0.0.1
     entrypoint: java -jar /greeting.jar
