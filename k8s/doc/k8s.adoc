@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
 ----
 package com.github.solairerove.k8s.greeting
 
-class Greeting(val id: Long, val content: String)
+data class Greeting(val id: Long, val content: String)
 ----
 
 +
@@ -81,6 +81,7 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/greeting.j
 NOTE: We are not sharing the Docker environment used by Minikube
 +
 ----
+eval $(minikube docker-env)
 ./gradlew clean build
 docker build -t $USER/greeting:0.0.1 .
 ----
@@ -88,14 +89,15 @@ docker build -t $USER/greeting:0.0.1 .
 . Run a Kubernetes deployment on the running Minikube cluster
 +
 ----
-kubectl run $USER-greeting --image $USER/greeting:0.0.1 --port 8080
-kubectl expose deployment $USER-greeting --type=NodePort
+kubectl run greeting --replicas=2 --image $USER/greeting:0.0.1 --port 8080
+kubectl expose deployment greeting --type=LoadBalancer --name=greeting-service
 ----
 
 . Test the app
 +
 ----
-curl $(minikube service $USER-greeting --url)/greeting
+curl $(minikube service greeting --url)/greeting
+curl $(minikube service greeting --url)/application/env
 ----
 
 . Create Deployment and Service YAML files for future repeatable deployments
@@ -103,13 +105,12 @@ curl $(minikube service $USER-greeting --url)/greeting
 ProTip from Joe Beda at Heptio: https://blog.heptio.com/using-kubectl-to-jumpstart-a-yaml-file-heptioprotip-6f5b8a63a3ea
 +
 ----
-kubectl run $USER-greeting --image $USER/greeting:0.0.1 --port 8080 -o yaml --dry-run \
-    > $USER-greeting-deployment.yaml
-kubectl expose deployment $USER-greeting --type=NodePort -o yaml --dry-run > $USER-greeting-svc.yaml
+kubectl run greeting --image $USER/greeting:0.0.1 --port 8080 -o yaml --dry-run > greeting-deployment.yaml
+kubectl expose deployment greeting --type=LoadBalancer -o yaml --dry-run > greeting-svc.yaml
 ----
 
-. Delete the resources created for `$USER-greeting`
+. Delete the resources created for `greeting`
 +
 ----
-kubectl delete all -l run=$USER-greeting
+kubectl delete all -l run=greeting
 ----
