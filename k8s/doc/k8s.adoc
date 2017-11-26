@@ -90,14 +90,14 @@ docker build -t $USER/greeting:0.0.1 .
 +
 ----
 kubectl run greeting --replicas=2 --image $USER/greeting:0.0.1 --port 8080
-kubectl expose deployment greeting --type=LoadBalancer --name=greeting-service
+kubectl expose deployment greeting --type=LoadBalancer --name=greeting-svc
 ----
 
 . Test the app
 +
 ----
-curl $(minikube service greeting --url)/greeting
-curl $(minikube service greeting --url)/application/env
+curl $(minikube service greeting-svc --url)/greeting
+curl $(minikube service greeting-svc --url)/application/env
 ----
 
 . Create Deployment and Service YAML files for future repeatable deployments
@@ -105,8 +105,8 @@ curl $(minikube service greeting --url)/application/env
 ProTip from Joe Beda at Heptio: https://blog.heptio.com/using-kubectl-to-jumpstart-a-yaml-file-heptioprotip-6f5b8a63a3ea
 +
 ----
-kubectl run greeting --image $USER/greeting:0.0.1 --port 8080 -o yaml --dry-run > greeting-deployment.yaml
-kubectl expose deployment greeting --type=LoadBalancer -o yaml --dry-run > greeting-svc.yaml
+kubectl run greeting --replicas=2 --image $USER/greeting:0.0.1 --port 8080 -o yaml --dry-run > greeting.yaml
+kubectl expose deployment greeting --type=LoadBalancer --name=greeting-svc -o yaml --dry-run > greeting-svc.yaml
 ----
 
 . Delete the resources created for `greeting`
