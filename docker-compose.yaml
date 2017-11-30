@@ -1,0 +1,29 @@
+version: "3.1"
+
+services:
+
+  config-server:
+    build: ./config-server
+    container_name: solairerove-config-server
+    image: solairerove/config-server:0.0.1
+    entrypoint: java -jar /config-server.jar
+    ports:
+      - "8001:8001"
+    networks:
+      - wizarnet
+
+  greeting:
+    depends_on:
+      - config-server
+    build: ./greeting
+    container_name: solairerove-greeting
+    image: solairerove/greeting:0.0.1
+    entrypoint: java -jar /greeting.jar
+    ports:
+      - "8002:8002"
+    networks:
+      - wizarnet
+
+networks:
+  wizarnet:
+    driver: bridge
