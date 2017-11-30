@@ -1,0 +1,12 @@
+package com.github.solairerove.k8s.config
+
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+
+@SpringBootApplication
+@EnableConfigServer
+class ConfigServerApplication
+
+fun main(args: Array<String>) {
+    SpringApplication.run(ConfigServerApplication::class.java, *args)
+}
