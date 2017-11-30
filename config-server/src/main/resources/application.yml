@@ -6,4 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/solairerove
+          uri: https://github.com/solairerove/spring-boot-k8s-hello-world
+          search-paths: configs
