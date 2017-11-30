@@ -1,1 +1,3 @@
 rootProject.name = 'spring-boot-k8s-greeting'
+
+include 'greeting'
