@@ -6,7 +6,7 @@
 	<groupId>com.github.solairerove.k8s</groupId>
 	<artifactId>happy-wizard</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<name>happy-wizard</name>
 	<description>Demo project for Spring Boot</description>
@@ -72,8 +72,6 @@
 	</dependencies>
 
 	<build>
-		<!--<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>-->
-		<!--<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
