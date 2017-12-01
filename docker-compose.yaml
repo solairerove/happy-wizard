@@ -1,8 +1,9 @@
-version: "3.1"
+version: "3.4"
 
 services:
 
   config-server:
+    restart: on-failure
     build: ./config-server
     container_name: solairerove-config-server
     image: solairerove/config-server:0.0.1
@@ -15,6 +16,7 @@ services:
   greeting:
     depends_on:
       - config-server
+    restart: on-failure
     build: ./greeting
     container_name: solairerove-greeting
     image: solairerove/greeting:0.0.1

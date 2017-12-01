@@ -4,7 +4,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/solairerove/spring-boot-k8s-hello-world
+          uri: https://github.com/solairerove/happy-wizard
           search-paths: configs
 
 server:
