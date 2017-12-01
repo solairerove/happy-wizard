@@ -32,7 +32,7 @@ docker-compose version 1.16.1, build 6d1ac21
 
 ### Run due docker compose:
 ```bash
-mvn clean install -Dspring.profiles.active=docker
+mvn clean install -P docker
 docker-compose build
 docker-compose up
 ```
