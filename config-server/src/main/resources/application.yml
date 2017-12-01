@@ -5,7 +5,7 @@ spring:
       server:
         git:
           uri: https://github.com/solairerove/happy-wizard
-          search-paths: configs
+          search-paths: configs/eureka-server,configs/greeting
 
 server:
   port: 8001

@@ -13,9 +13,23 @@ services:
     networks:
       - wizarnet
 
+  eureka-server:
+    depends_on:
+      - config-server
+    restart: on-failure
+    build: ./eureka-server
+    container_name: solairerove-eureka-server
+    image: solairerove/eureka-server:0.0.1
+    entrypoint: java -jar /eureka-server.jar
+    ports:
+      - "8761:8761"
+    networks:
+      - wizarnet
+
   greeting:
     depends_on:
       - config-server
+      - eureka-server
     restart: on-failure
     build: ./greeting
     container_name: solairerove-greeting
