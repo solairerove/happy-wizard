@@ -12,7 +12,9 @@ import java.util.concurrent.atomic.AtomicLong
  * Greeting rest controller.
  */
 @RestController
-class GreetingController(@Autowired val restTemplate: RestTemplate) {
+class GreetingController(
+        @Autowired val restTemplate: RestTemplate,
+        @Autowired val taskClient: TaskClient) {
 
     @Value("\${profile}")
     var profile: String? = null
@@ -26,4 +28,8 @@ class GreetingController(@Autowired val restTemplate: RestTemplate) {
     @GetMapping("/tasks")
     fun tasks(@RequestParam("service", defaultValue = "task") service: String): String =
             restTemplate.getForObject("http://$service/tasks", String::class.java)
+
+    @GetMapping("feign")
+    fun taskFeign(): String =
+            taskClient.tasks()
 }
