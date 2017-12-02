@@ -26,9 +26,22 @@ services:
     networks:
       - wizarnet
 
-  greeting:
+  task:
     depends_on:
       - eureka-server
+    restart: always
+    build: ./task
+    container_name: solairerove-task
+    image: solairerove/task:0.0.1
+    entrypoint: java -jar /task.jar
+    ports:
+      - "8003:8003"
+    networks:
+      - wizarnet
+
+  greeting:
+    depends_on:
+      - task
     restart: always
     build: ./greeting
     container_name: solairerove-greeting
