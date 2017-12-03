@@ -30,6 +30,12 @@ Docker version 17.09.0-ce, build afdb6d4
 docker-compose version 1.16.1, build 6d1ac21
 ```
 
+### Update config-server:
+
+```bash
+curl -X POST http://localhost:8001/bus/refresh
+```
+
 ### Run due docker compose:
 ```bash
 mvn clean install -P docker
