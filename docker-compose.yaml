@@ -11,11 +11,13 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=config-server
       - RABBITMQ_DEFAULT_PASS=config-server
+    networks:
+      - wizarnet
 
   config-server:
     depends_on:
       - rabbitmq
-    restart: on-failure
+    restart: always
     build: ./config-server
     container_name: solairerove-config-server
     image: solairerove/config-server:0.0.1
@@ -28,7 +30,7 @@ services:
   eureka-server:
     depends_on:
       - config-server
-    restart: on-failure
+    restart: always
     build: ./eureka-server
     container_name: solairerove-eureka-server
     image: solairerove/eureka-server:0.0.1

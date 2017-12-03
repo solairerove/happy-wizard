@@ -14,7 +14,7 @@ spring:
       server:
         git:
           uri: https://github.com/solairerove/happy-wizard
-          search-paths: configs/eureka-server,configs/greeting
+          search-paths: configs/eureka-server,configs/greeting,configs/task
 
 server:
   port: 8001
@@ -35,7 +35,7 @@ spring:
       server:
         git:
           uri: https://github.com/solairerove/happy-wizard
-          search-paths: configs/eureka-server,configs/greeting
+          search-paths: configs/eureka-server,configs/greeting,configs/task
 
 server:
   port: 8001

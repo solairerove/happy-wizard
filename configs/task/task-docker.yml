@@ -1,5 +1,4 @@
 ---
-profile: docker
 eureka:
   client:
     serviceUrl:
