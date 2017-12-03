@@ -1,5 +1,5 @@
 ---
-profile: bus-dev
+profile: updated-bus-dev
 eureka:
   client:
     serviceUrl:
