@@ -9,5 +9,5 @@ spring:
   rabbitmq:
     username: config-server
     password: config-server
-    host: localhost
+    host: rabbitmq
     port: 5672
