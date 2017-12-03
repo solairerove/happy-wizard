@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong
 @RestController
 class GreetingController(
         @Autowired val restTemplate: RestTemplate,
-        @Autowired val taskClient: TaskClient) {
+        @Autowired val taskService: TaskService) {
 
     @Value("\${profile}")
     var profile: String? = null
@@ -30,6 +30,5 @@ class GreetingController(
             restTemplate.getForObject("http://$service/tasks", String::class.java)
 
     @GetMapping("feign")
-    fun taskFeign(): String =
-            taskClient.tasks()
+    fun taskFeign(): String = taskService.fetchTasks()
 }
